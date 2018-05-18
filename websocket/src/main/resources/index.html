@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="./three.js-master/build/three.js"></script>
+        <script src="./three.js-master/examples/js/Detector.js"></script>
+        <script src="./three.js-master/examples/js/controls/OrbitControls.js"></script>
+    </head>
+    <body>
+        <div class="info">
+            <span>Positions of graph vertices:</span>
+            <table>
+                <tr>
+                    <th><input id="vertex0_x" type="number" min="-30" max="30" value="10"/></th>
+                    <th><input id="vertex0_y" type="number" min="-30" max="30" value="22"/></th>
+                    <th><input id="vertex0_z" type="number" min="-30" max="30" value="9"/></th>
+                </tr>
+                <tr>
+                    <th><input id="vertex1_x" type="number" min="-30" max="30" value="15"/></th>
+                    <th><input id="vertex1_y" type="number" min="-30" max="30" value="11"/></th>
+                    <th><input id="vertex1_z" type="number" min="-30" max="30" value="-5"/></th>
+                </tr>
+                <tr>
+                    <th><input id="vertex2_x" type="number" min="-30" max="30" value="18"/></th>
+                    <th><input id="vertex2_y" type="number" min="-30" max="30" value="1"/></th>
+                    <th><input id="vertex2_z" type="number" min="-30" max="30" value="-2"/></th>
+                </tr>
+                <tr>
+                    <th><input id="vertex3_x" type="number" min="-30" max="30" value="24"/></th>
+                    <th><input id="vertex3_y" type="number" min="-30" max="30" value="0"/></th>
+                    <th><input id="vertex3_z" type="number" min="-30" max="30" value="0"/></th>
+                </tr>
+                <tr>
+                    <th><input id="vertex4_x" type="number" min="-30" max="30" value="2"/></th>
+                    <th><input id="vertex4_y" type="number" min="-30" max="30" value="1"/></th>
+                    <th><input id="vertex4_z" type="number" min="-30" max="30" value="0"/></th>
+                </tr>
+                <tr>
+                    <th><input id="vertex5_x" type="number" min="-30" max="30" value="7"/></th>
+                    <th><input id="vertex5_y" type="number" min="-30" max="30" value="3"/></th>
+                    <th><input id="vertex5_z" type="number" min="-30" max="30" value="-1"/></th>
+                </tr>
+            </table>
+            <button id="start" onclick="onClick()">build</button>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

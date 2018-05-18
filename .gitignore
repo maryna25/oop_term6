@@ -3,3 +3,6 @@
 out/
 .DS_Store
 *.log
+target/
+test/
+three.js-master
