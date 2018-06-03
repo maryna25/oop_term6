@@ -69,6 +69,8 @@ public class StudentDAOImpl implements StudentDAO {
 
         } catch (SQLException e) {
             AppLogger.getLogger().error("SQL execution failed", e);
+        } finally {
+            DBConnectionFactory.closeConnection(statement, connection);
         }
     }
 }

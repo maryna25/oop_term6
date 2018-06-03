@@ -59,6 +59,8 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         } catch (SQLException e) {
             AppLogger.getLogger().error("SQL execution failed", e);
+        } finally {
+            DBConnectionFactory.closeConnection(statement, connection);
         }
     }
 }

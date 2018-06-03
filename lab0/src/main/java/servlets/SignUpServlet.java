@@ -36,37 +36,11 @@ public class SignUpServlet extends HttpServlet {
         if (role.equals("teacher")) {
             Teacher teacher = new Teacher(name, surname, login, password);
             new TeacherDAOImpl().newTeacher(teacher);
-            // Invalidate old session
-            HttpSession oldSession = req.getSession(false);
-            if (oldSession != null) oldSession.invalidate();
-            // Create new session
-            HttpSession newSession = req.getSession(true);
-
-            // 30 minutes expiry time
-            newSession.setMaxInactiveInterval(30 * 60);
-            newSession.setAttribute("role", "teacher");
-            newSession.setAttribute("id", teacher.getId());
-            newSession.setAttribute("name", teacher.getName());
-
-            AppLogger.getLogger().info("Teacher login");
             resp.sendRedirect("/api");
         }
         else if (role.equals("student")) {
             Student student = new Student(name, surname, login, password);
             new StudentDAOImpl().newStudent(student);
-            // Invalidate old session
-            HttpSession oldSession = req.getSession(false);
-            if (oldSession != null) oldSession.invalidate();
-            // Create new session
-            HttpSession newSession = req.getSession(true);
-
-            // 30 minutes expiry time
-            newSession.setMaxInactiveInterval(30 * 60);
-            newSession.setAttribute("role", "student");
-            newSession.setAttribute("id", student.getId());
-            newSession.setAttribute("name", student.getName());
-
-            AppLogger.getLogger().info("Student login");
             resp.sendRedirect("/api");
         }
         else
