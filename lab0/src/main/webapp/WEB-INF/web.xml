@@ -84,4 +84,22 @@
         <url-pattern>/updateassignment</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>TeacherFilter</filter-name>
+        <filter-class>filters.TeacherFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TeacherFilter</filter-name>
+        <url-pattern>/teacher</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>StudentFilter</filter-name>
+        <filter-class>filters.StudentFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>StudentFilter</filter-name>
+        <url-pattern>/student</url-pattern>
+    </filter-mapping>
+
 </web-app>
