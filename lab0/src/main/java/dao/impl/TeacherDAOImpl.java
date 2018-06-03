@@ -4,10 +4,12 @@ import dao.DBConnectionFactory;
 import dao.contract.TeacherDAO;
 import log.AppLogger;
 import model.Teacher;
+import dao.Encode;
 
 import java.sql.*;
 
 public class TeacherDAOImpl implements TeacherDAO {
+    Encode encode = new Encode();
 
     public Teacher getTeacher(int id) {
         String sql = String.format("SELECT * FROM lab0.teachers WHERE id=%s", id);
@@ -15,7 +17,7 @@ public class TeacherDAOImpl implements TeacherDAO {
     }
 
     public Teacher checkLogin(String login, String password) {
-        String sql = String.format("SELECT * FROM lab0.teachers WHERE login='%s' AND password = '%s'", login, password);
+        String sql = String.format("SELECT * FROM lab0.teachers WHERE login='%s' AND password = '%s'", encode.toUTF8(login), encode.toUTF8(password));
 
         return getTeacherFromDB(sql);
     }
@@ -44,7 +46,7 @@ public class TeacherDAOImpl implements TeacherDAO {
     }
     public void newTeacher(Teacher teacher){
         String sql = String.format("INSERT INTO lab0.teachers(name, surname, login, password) " +
-                "VALUES('%s', '%s', '%s', '%s')", teacher.getName(), teacher.getSurname(), teacher.getLogin(), teacher.getPassword());
+                "VALUES('%s', '%s', '%s', '%s')", encode.toUTF8(teacher.getName()), encode.toUTF8(teacher.getSurname()), encode.toUTF8(teacher.getLogin()), teacher.getPassword());
         AppLogger.getLogger().info(sql);
         executeUpdate(sql);
     }

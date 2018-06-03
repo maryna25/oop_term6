@@ -7,6 +7,7 @@ import log.AppLogger;
 import model.Assignment;
 import model.Course;
 import model.Student;
+import dao.Encode;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ public class AssignmentDAOImpl implements dao.contract.AssignmentDAO {
 
     private StudentDAO studentDAO = new StudentDAOImpl();
     private CourseDAO courseDAO = new CourseDAOImpl();
+    Encode encode = new Encode();
 
     public AssignmentDAOImpl() {
     }
@@ -127,7 +129,7 @@ public class AssignmentDAOImpl implements dao.contract.AssignmentDAO {
         ResultSet rs = executeQuery(sql);
         Assignment assFound = getAssignments(rs).get(0);
         sql = String.format("UPDATE lab0.assignments SET mark=%s, response='%s', status=2 WHERE id=%s",
-                            ass.getMark(), ass.getResponse(), assFound.getId());
+                            ass.getMark(), encode.toUTF8(ass.getResponse()), assFound.getId());
         AppLogger.getLogger().info(sql);
         executeUpdate(sql);
     }

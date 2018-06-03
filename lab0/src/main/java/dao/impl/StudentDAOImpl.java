@@ -4,6 +4,7 @@ import dao.DBConnectionFactory;
 import dao.contract.StudentDAO;
 import log.AppLogger;
 import model.Student;
+import dao.Encode;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
+    Encode encode = new Encode();
 
     public Student getStudent(int id) {
         String sql = String.format("SELECT * FROM lab0.students WHERE id=%s", id);
@@ -18,12 +20,12 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     public Student getStudentBySurname(String surname){
-        String sql = String.format("SELECT * FROM lab0.students WHERE surname='%s'", surname);
+        String sql = String.format("SELECT * FROM lab0.students WHERE surname='%s'", encode.toUTF8(surname));
         return getStudentFromDB(sql);
     }
 
     public Student checkLogin(String login, String password) {
-        String sql = String.format("SELECT * FROM lab0.students WHERE login='%s' AND password = '%s'", login, password);
+        String sql = String.format("SELECT * FROM lab0.students WHERE login='%s' AND password = '%s'", encode.toUTF8(login), encode.toUTF8(password));
 
        return getStudentFromDB(sql);
     }
@@ -54,7 +56,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     public void newStudent(Student student){
         String sql = String.format("INSERT INTO lab0.students(name, surname, login, password) " +
-                "VALUES('%s', '%s', '%s', '%s')", student.getName(), student.getSurname(), student.getLogin(), student.getPassword());
+                "VALUES('%s', '%s', '%s', '%s')", encode.toUTF8(student.getName()), encode.toUTF8(student.getSurname()), encode.toUTF8(student.getLogin()), encode.toUTF8(student.getPassword()));
         AppLogger.getLogger().info(sql);
         executeUpdate(sql);
     }

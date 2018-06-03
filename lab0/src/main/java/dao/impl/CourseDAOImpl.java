@@ -5,6 +5,7 @@ import dao.contract.CourseDAO;
 import dao.contract.TeacherDAO;
 import log.AppLogger;
 import model.Course;
+import dao.Encode;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDAOImpl implements CourseDAO {
+    Encode encode = new Encode();
 
     private TeacherDAO teacherDAO = new TeacherDAOImpl();
 
@@ -105,7 +107,7 @@ public class CourseDAOImpl implements CourseDAO {
 
     public void createCourse(Course course) {
         String sql = String.format("INSERT INTO lab0.courses(title, program, teacher_id) " +
-                        "VALUES('%s', '%s', %d)", course.getTitle(), course.getProgram(), course.getTeacher().getId());
+                        "VALUES('%s', '%s', %d)", encode.toUTF8(course.getTitle()), encode.toUTF8(course.getProgram()), course.getTeacher().getId());
         AppLogger.getLogger().info(sql);
         executeUpdate(sql);
     }
@@ -117,7 +119,7 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     public Course getCourseByName(String name){
-        String sql = String.format("SELECT * FROM lab0.courses WHERE title='%s'", name);
+        String sql = String.format("SELECT * FROM lab0.courses WHERE title='%s'", encode.toUTF8(name));
         ResultSet rs = executeQuery(sql);
         return getCourses(rs).get(0);
     }
