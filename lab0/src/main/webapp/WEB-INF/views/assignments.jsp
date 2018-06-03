@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="/WEB-INF/custom_tags/assignment.tld" prefix="ct" %>
 <html>
 <head>
     <title>Assignments</title>
@@ -21,16 +22,7 @@
     </thead>
     <tbody>
     <c:forEach var="ass" items="${assignments}">
-        <tr>
-            <form action="UpdateAssignmentServlet" method="post">
-                <td><input type="text" name="title" value="<c:out value="${ass.getCourse().getTitle()}"/>"><br></td>
-                <td><input type="text" name="surname" value="<c:out value="${ass.getStudent().getSurname()}"/>"><br></td>
-                <td><input type="text" name="mark" value="<c:out value="${ass.getMark()}"/>"><br></td>
-                <td><input type="text" name="response" value="<c:out value="${ass.getResponse()}"/>"><br></td>
-                <td><c:out value="${ass.getStatus()}"/></td>
-                <td><input type="submit" value="Next"></td>
-            </form>
-        </tr>
+        <tr><ct:assignment item="${ass}" /></tr>
     </c:forEach>
     </tbody>
 </table>

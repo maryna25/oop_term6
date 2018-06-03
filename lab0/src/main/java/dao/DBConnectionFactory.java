@@ -20,7 +20,7 @@ public class DBConnectionFactory {
         ds.setUsername("root");
 //        ds.setPassword("");
         ds.setInitialSize(5);
-        ds.setMaxActive(10);
+        ds.setMaxActive(1000);
         ds.setMaxIdle(5);
         ds.setMinIdle(2);
     }
