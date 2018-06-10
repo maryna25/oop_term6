@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlets.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/ </url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Teacher</servlet-name>
+        <servlet-class>servlets.TeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Teacher</servlet-name>
+        <url-pattern>/teacher</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewCourse</servlet-name>
+        <servlet-class>servlets.NewCourseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewCourse</servlet-name>
+        <url-pattern>/newcourse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Assignments</servlet-name>
+        <servlet-class>servlets.AssignmentsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Assignments</servlet-name>
+        <url-pattern>/assignments</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Signup</servlet-name>
+        <servlet-class>servlets.SignUpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Signup</servlet-name>
+        <url-pattern>/sign_up</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Student</servlet-name>
+        <servlet-class>servlets.StudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Student</servlet-name>
+        <url-pattern>/student</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewAssignment</servlet-name>
+        <servlet-class>servlets.NewAssignmentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewAssignment</servlet-name>
+        <url-pattern>/newassignment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateAssignment</servlet-name>
+        <servlet-class>servlets.UpdateAssignmentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateAssignment</servlet-name>
+        <url-pattern>/updateassignment</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>TeacherFilter</filter-name>
+        <filter-class>filters.TeacherFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TeacherFilter</filter-name>
+        <url-pattern>/teacher</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>StudentFilter</filter-name>
+        <filter-class>filters.StudentFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>StudentFilter</filter-name>
+        <url-pattern>/student</url-pattern>
+    </filter-mapping>
+
+</web-app>
